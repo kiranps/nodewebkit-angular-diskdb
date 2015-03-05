@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-12">
+    <input type="text" class="form-control" ng-model="search" placeholder="Search" autofocus>
+    <table class="table table-bordered">
+      <caption><h3>Contacts</h3></caption>
+      <tbody>
+        <tr>
+          <th style='width:10px;'>#</th>
+          <th>name</th>
+          <th>phone</th>
+          <th style='width:10px;'>*</th>
+        </tr>
+        <tr ng-repeat="contact in contacts| filter:search">
+          <td>{{ $index }}</td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.phno }}</td>
+          <td style="text-align:center;"><input type="checkbox" ng-click="mark('{{ contact._id }}')"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="form-group">
+      <!--Modal Button-->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target=".modal-confirm">delete</button>
+
+      <!--Modal Content-->
+      <div class="modal modal-confirm" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+
+            <div class="modal-header" align="center">
+              <h4 class="modal-title">Warning</h4>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+              <button class="btn btn-default" ng-click="deleteItems()" data-dismiss="modal">Ok</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
